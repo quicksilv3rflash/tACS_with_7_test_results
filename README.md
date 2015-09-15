@@ -1,0 +1,1 @@
+This repository contains both the current version of the tACS experiment administration software and the deprecated version with errors in the mazeEEG signal.
