@@ -1,9 +1,9 @@
-#So, I've recorded all movements through the maze as a single GIANT LOG FILE.
-#This program will produce the median values (using all test data, even deprecated)
-#for each maze. The values analyzed to find medians will be:
-#Completion time, Non-path cells traversed, and Attempted wall traversals
-#these medians will then be used to normalize the data set to account for
-#the different lengths of the mazes during analysis.
+#This program will generate a 5 number summary for all mazes in
+#4 categories. These are:
+#NOSTIM
+#CTLSTIM
+#MAZESTIM_X1
+#MAZESTIM_X2
 
 #imports
 import math,os
