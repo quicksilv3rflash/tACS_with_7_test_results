@@ -60,20 +60,14 @@ for file in os.listdir(os.getcwd() + "/testdata/deprecated"):
             deprecatedstimtypes.append(int(stringtestdata[x+10:x+11]))
 
 
-#all NOSTIM times
+#only deprecated NOSTIM times
 normNOSTIMtimes = []
-for x in range(0, 120):
-    if(currentstimtypes[x] == 0):
-        normNOSTIMtimes.append((currentendtimes[x])/(medianendtimes[x % 30]))
 for x in range(0, 210):
     if(deprecatedstimtypes[x] == 0):
         normNOSTIMtimes.append((deprecatedendtimes[x])/(medianendtimes[x % 30]))
 
-#all CTLSTIM times
+#only deprecated CTLSTIM times
 normCTLSTIMtimes = []
-for x in range(0, 120):
-    if(currentstimtypes[x] == 1):
-        normCTLSTIMtimes.append((currentendtimes[x])/(medianendtimes[x % 30]))
 for x in range(0, 210):
     if(deprecatedstimtypes[x] == 1):
         normCTLSTIMtimes.append((deprecatedendtimes[x])/(medianendtimes[x % 30]))
@@ -91,29 +85,51 @@ for x in range(0, 210):
     if(deprecatedstimtypes[x] == 2):
         normMAZEX2times.append((deprecatedendtimes[x])/(medianendtimes[x % 30]))
 
+#only CURRENT (fixed) NOSTIM times
+cur_normNOSTIMtimes = []
+for x in range(0, 120):
+    if(currentstimtypes[x] == 0):
+        cur_normNOSTIMtimes.append((currentendtimes[x])/(medianendtimes[x % 30]))
+
+#only CURRENT (fixed) CTLSTIM times
+cur_normCTLSTIMtimes = []
+for x in range(0, 120):
+    if(currentstimtypes[x] == 1):
+        cur_normCTLSTIMtimes.append((currentendtimes[x])/(medianendtimes[x % 30]))
+        
 #sort the lists
+sortedCURNOSTIM = sorted(cur_normNOSTIMtimes)
+sortedCURCTLSTIM = sorted(cur_normCTLSTIMtimes)
 sortedNOSTIM = sorted(normNOSTIMtimes)
 sortedCTLSTIM = sorted(normCTLSTIMtimes)
 sortedMAZEX1 = sorted(normMAZEX1times)
 sortedMAZEX2 = sorted(normMAZEX2times)
 
-print("NORMALIZED NOSTIM","\n")
+print("NORMALIZED DEPRECATED NOSTIM","\n")
 print("MIN: ",sortedNOSTIM[0],"\n")
-print("Q1: ",sortedNOSTIM[27],"\n")
-print("MED: ",(sortedNOSTIM[54]+sortedNOSTIM[55])/2,"\n")
-print("Q3: ",sortedNOSTIM[82],"\n")
-print("MAX: ",sortedNOSTIM[109],"\n")
+print("Q1: ",(sortedNOSTIM[17]),"\n")
+print("MED: ",(sortedNOSTIM[34]+sortedNOSTIM[35])/2,"\n")
+print("Q3: ",(sortedNOSTIM[52]),"\n")
+print("MAX: ",sortedNOSTIM[69],"\n")
 print("=========================================","\n")
 
-print("NORMALIZED CTLSTIM","\n")
+print("NORMALIZED DEPRECATED CTLSTIM","\n")
 print("MIN: ",sortedCTLSTIM[0],"\n")
-print("Q1: ",sortedCTLSTIM[27],"\n")
-print("MED: ",(sortedCTLSTIM[54]+sortedCTLSTIM[55])/2,"\n")
-print("Q3: ",sortedCTLSTIM[82],"\n")
-print("MAX: ",sortedCTLSTIM[109],"\n")
+print("Q1: ",(sortedCTLSTIM[17]),"\n")
+print("MED: ",(sortedCTLSTIM[34]+sortedCTLSTIM[35])/2,"\n")
+print("Q3: ",(sortedCTLSTIM[52]),"\n")
+print("MAX: ",sortedCTLSTIM[69],"\n")
 print("=========================================","\n")
 
-print("NORMALIZED MAZEX1","\n")
+print("NORMALIZED DEPRECATED MAZEX2","\n")
+print("MIN: ",sortedMAZEX2[0],"\n")
+print("Q1: ",(sortedMAZEX2[17]),"\n")
+print("MED: ",(sortedMAZEX2[34]+sortedMAZEX2[35])/2,"\n")
+print("Q3: ",(sortedMAZEX2[52]),"\n")
+print("MAX: ",sortedMAZEX2[69],"\n")
+print("=========================================","\n")
+
+print("NORMALIZED CURRENT MAZEX1","\n")
 print("MIN: ",sortedMAZEX1[0],"\n")
 print("Q1: ",(sortedMAZEX1[9]+sortedMAZEX1[10])/2,"\n")
 print("MED: ",(sortedMAZEX1[19]+sortedMAZEX1[20])/2,"\n")
@@ -121,10 +137,18 @@ print("Q3: ",(sortedMAZEX1[29]+sortedMAZEX1[30])/2,"\n")
 print("MAX: ",sortedMAZEX1[39],"\n")
 print("=========================================","\n")
 
-print("NORMALIZED MAZEX2","\n")
-print("MIN: ",sortedMAZEX2[0],"\n")
-print("Q1: ",(sortedMAZEX2[17]),"\n")
-print("MED: ",(sortedMAZEX2[34]+sortedMAZEX2[35])/2,"\n")
-print("Q3: ",(sortedMAZEX2[52]),"\n")
-print("MAX: ",sortedMAZEX2[69],"\n")
+print("NORMALIZED CURRENT NOSTIM","\n")
+print("MIN: ",sortedCURNOSTIM[0],"\n")
+print("Q1: ",(sortedCURNOSTIM[9]+sortedCURNOSTIM[10])/2,"\n")
+print("MED: ",(sortedCURNOSTIM[19]+sortedCURNOSTIM[20])/2,"\n")
+print("Q3: ",(sortedCURNOSTIM[29]+sortedCURNOSTIM[30])/2,"\n")
+print("MAX: ",sortedCURNOSTIM[39],"\n")
+print("=========================================","\n")
+
+print("NORMALIZED CURRENT CTLSTIM","\n")
+print("MIN: ",sortedCURCTLSTIM[0],"\n")
+print("Q1: ",(sortedCURCTLSTIM[9]+sortedCURCTLSTIM[10])/2,"\n")
+print("MED: ",(sortedCURCTLSTIM[19]+sortedCURCTLSTIM[20])/2,"\n")
+print("Q3: ",(sortedCURCTLSTIM[29]+sortedCURCTLSTIM[30])/2,"\n")
+print("MAX: ",sortedCURCTLSTIM[39],"\n")
 print("=========================================","\n")
